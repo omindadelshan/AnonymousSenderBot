@@ -50,10 +50,14 @@ else:
 
 @JEBotZ.on(events.NewMessage(pattern="^/start"))
 async def start(event):
-    await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@JEBotZ**", 
-                       buttons=[[Button.inline("Help", data="help")], 
-                                [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
-    
+    if event.is_private:
+       await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@JEBotZ**", 
+                         buttons=[[Button.inline("Help", data="help")], 
+                                  [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
+       return
+    if event.is_group:
+       await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻") 
+     
  
 @JEBotZ.on(events.callbackquery.CallbackQuery(data="help"))
 async def _(event):
