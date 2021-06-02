@@ -56,7 +56,7 @@ async def start(event):
  
 @JEBotZ.on(events.callbackquery.CallbackQuery(data="help"))
 async def _(event):
-     await event.edit("**Help 📖**\n\nUsing me you can anonymize the sender and add or change caption of a media file\n\n**Available Commands 🧐**\n\n- /send (reply to media): Anonymize the sender\n- /edit (caption) (reply to media): Add or change the caption and anonymize the sender\n\n**@JEBotZ**", 
+     await event.edit("**Help 📖**\n\nUsing me you can anonymize the sender and add or change caption of a media file\n\n**Available Commands 🧐**\n\n- /send (reply to media): Anonymize the sender\n- /send (caption) (reply to media): Add or change the caption and anonymize the sender\n\n**@JEBotZ**", 
                         buttons=[[Button.inline("Back", data="start")]])
     
 @JEBotZ.on(events.callbackquery.CallbackQuery(data="start"))
@@ -64,22 +64,16 @@ async def _(event):
      await event.edit("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@JEBotZ**", 
                        buttons=[[Button.inline("Help", data="help")], 
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
-    
-    
-@JEBotZ.on(events.NewMessage(pattern="^/send"))
-async def anonymize(event):   
-     sed = await event.get_reply_message()
-     await JEBotZ.send_file(event.chat.id, sed)
-      
-      
-@JEBotZ.on(events.NewMessage(pattern="^/edit ?(.*)"))
+         
+@JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
+   try:
      lel = await event.get_reply_message()
-     if lel is None:
-        await event.reply("Enter caption for the media file 🥴")
-        return
      cap = event.pattern_match.group(1)
-     await JEBotZ.send_file(event.chat.id, lel, caption=cap) 
+     await JEBotZ.send_file(event.chat.id, lel, caption=cap)
+   except Exception:
+      await event.reply("Reply to a media file 🥴")
+      return 
     
     
     
