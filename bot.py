@@ -17,7 +17,6 @@
 import logging
 from telethon import TelegramClient, events, Button
 from decouple import config
-from requests import get
 
 # logging code lines ported from xditya's repo.
 logging.basicConfig(
