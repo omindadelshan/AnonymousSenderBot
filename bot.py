@@ -49,19 +49,19 @@ else:
     
 @JEBotZ.on(events.NewMessage(pattern="^/start"))
 async def start(event):
-    await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot.\nClick on help to find out how to use me.\n\n**@JEBotZ**", 
+    await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me.\n\n**@JEBotZ**", 
                        buttons=[[Button.inline("Help", data="help")], 
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
     
  
 @JEBotZ.on(events.callbackquery.CallbackQuery(data="help"))
 async def _(event):
-     await event.edit("**Help**\n\nUsing me you can anonymize the sender and add or change caption of a media file\n\n**Available Commands:**\n\n- /send (reply to media): Anonymize the sender.\n- /edit (caption) (reply to media): Add or change the caption and anonymize the sender.\n\n**@JEBotZ**", 
+     await event.edit("**Help 📖**\n\nUsing me you can anonymize the sender and add or change caption of a media file\n\n**Available Commands 🧐**\n\n- /send (reply to media): Anonymize the sender.\n- /edit (caption) (reply to media): Add or change the caption and anonymize the sender.\n\n**@JEBotZ**", 
                         buttons=[[Button.inline("Back", data="start")]])
     
 @JEBotZ.on(events.callbackquery.CallbackQuery(data="start"))
 async def _(event):
-     await event.edit("Heya, I'm **Advanced Anonymous Sender** Bot.\nClick on help to find out how to use me.\n\n**@JEBotZ**", 
+     await event.edit("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me.\n\n**@JEBotZ**", 
                        buttons=[[Button.inline("Help", data="help")], 
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
     
