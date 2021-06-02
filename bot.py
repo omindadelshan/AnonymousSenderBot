@@ -69,7 +69,8 @@ async def _(event):
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
    a = await event.client.get_permissions(event.chat_id, event.sender_id)
-   if event.is_group:
+   if event.is_private:
+        return
      if a.is_admin:
         try:
           lel = await event.get_reply_message()
@@ -78,7 +79,7 @@ async def caption(event):
         except Exception:
            await event.reply("Reply to a media file 🥴")
            return
-     else:
+     if not a.is_admin:
         await event.reply("Only admins can execute this command!")
 
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
