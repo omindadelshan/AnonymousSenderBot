@@ -87,7 +87,7 @@ async def _(event):
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
    if event.is_group:
-      if event.is_admin:
+      if event is_admin:
         try:
           lel = await event.get_reply_message()
           cap = event.pattern_match.group(1)
