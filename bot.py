@@ -84,8 +84,8 @@ async def _(event):
                        buttons=[[Button.inline("Help", data="help")], 
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
          
-@is_admin
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
+@is_admin
 async def caption(event):
    if event.is_group:
      try:
