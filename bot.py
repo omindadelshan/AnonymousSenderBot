@@ -18,7 +18,6 @@ import logging
 from telethon import TelegramClient, events, Button
 from decouple import config
 
-# logging code lines ported from xditya's repo.
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.INFO
 )
@@ -52,7 +51,7 @@ else:
 async def start(event):
     await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot.\nClick on help to find out how to use me.\n\n**@JEBotZ**", 
                        buttons=[[Button.inline("Help", data="help")], 
-                                [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/JEAnonymousBot")]])
+                                [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
     
  
 @JEBotZ.on(events.callbackquery.CallbackQuery(data="help"))
@@ -64,7 +63,7 @@ async def _(event):
 async def _(event):
      await event.edit("Heya, I'm **Advanced Anonymous Sender** Bot.\nClick on help to find out how to use me.\n\n**@JEBotZ**", 
                        buttons=[[Button.inline("Help", data="help")], 
-                                [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/JEAnonymousBot")]])
+                                [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
     
     
 @JEBotZ.on(events.NewMessage(pattern="^/send"))
