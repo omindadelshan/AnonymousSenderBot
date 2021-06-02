@@ -71,27 +71,28 @@ async def caption(event):
    a = await event.client.get_permissions(event.chat_id, event.sender_id)
    if event.is_private:
         return
-     if a.is_admin:
-        try:
-          lel = await event.get_reply_message()
-          cap = event.pattern_match.group(1)
-          await JEBotZ.send_file(event.chat.id, lel, caption=cap)
-        except Exception:
-           await event.reply("Reply to a media file 🥴")
-           return
-     if not a.is_admin:
-        await event.reply("Only admins can execute this command!")
+   if a.is_admin:
+      try:
+        lel = await event.get_reply_message()
+        cap = event.pattern_match.group(1)
+        await JEBotZ.send_file(event.chat.id, lel, caption=cap)
+      except Exception:
+         await event.reply("Reply to a media file 🥴")
+         return
+   if not a.is_admin:
+      await event.reply("Only admins can execute this command!")
 
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
-   if event.is_private:
-     try:
-       lel = await event.get_reply_message()
-       cap = event.pattern_match.group(1)
-       await JEBotZ.send_file(event.chat.id, lel, caption=cap)
-     except Exception:
-        await event.reply("Reply to a media file 🥴")
-        return 
+   if event.is_group:
+        return
+   try:
+     lel = await event.get_reply_message()
+     cap = event.pattern_match.group(1)
+     await JEBotZ.send_file(event.chat.id, lel, caption=cap)
+   except Exception:
+      await event.reply("Reply to a media file 🥴")
+      return 
       
        
 print("Bot has started!")
