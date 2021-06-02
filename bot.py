@@ -68,9 +68,9 @@ async def _(event):
          
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
-   a = await event.client.get_permissions(event.chat_id, event.sender_id)
    if event.is_private:
         return
+   a = await event.client.get_permissions(event.chat_id, event.sender_id)
    if a.is_admin:
       try:
         lel = await event.get_reply_message()
