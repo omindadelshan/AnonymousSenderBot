@@ -87,9 +87,7 @@ async def _(event):
 @is_admin
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
-   if event.is_private:
-       return
-   else:
+   if event.is_group:
      try:
        lel = await event.get_reply_message()
        cap = event.pattern_match.group(1)
@@ -100,9 +98,7 @@ async def caption(event):
 
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
-   if event.is_group:
-      return
-   else:
+   if event.is_private:
      try:
        lel = await event.get_reply_message()
        cap = event.pattern_match.group(1)
