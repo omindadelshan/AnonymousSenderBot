@@ -1,5 +1,5 @@
 #    Copyright (C) 2021 - Infinity Bots
-#    This programme is a part of Mizuki TG bot project
+#    This programme is a part of JEAnonymousBot
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published by
@@ -69,11 +69,11 @@ async def _(event):
     
 @JEBotZ.on(events.NewMessage(pattern="^/send"))
 async def anonymize(event):
-     lel = await event.get_reply_message()
-     await JEBotZ.send_file(event.chat.id, lel)
+     sed = await event.get_reply_message()
+     await JEBotZ.send_file(event.chat.id, sed)
       
       
-@JEBotZ.on(events.NewMessage(pattern="^/edit"))
+@JEBotZ.on(events.NewMessage(pattern="^/edit ?(.*)"))
 async def caption(event):
      lel = await event.get_reply_message()
      cap = event.pattern_match.group(1)
