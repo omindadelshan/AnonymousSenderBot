@@ -85,16 +85,16 @@ async def _(event):
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
          
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
-@is_admin
 async def caption(event):
    if event.is_group:
-     try:
-       lel = await event.get_reply_message()
-       cap = event.pattern_match.group(1)
-       await JEBotZ.send_file(event.chat.id, lel, caption=cap)
-     except Exception:
-        await event.reply("Reply to a media file 🥴")
-        return 
+      if event.is_admin:
+        try:
+          lel = await event.get_reply_message()
+          cap = event.pattern_match.group(1)
+          await JEBotZ.send_file(event.chat.id, lel, caption=cap)
+        except Exception:
+           await event.reply("Reply to a media file 🥴")
+           return 
 
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
