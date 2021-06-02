@@ -68,7 +68,7 @@ async def _(event):
     
 @JEBotZ.on(events.NewMessage(pattern="^/send"))
 async def anonymize(event):
-     if not event.reply_message:
+     if not event.reply_message():
         await event.reply("Reply to a media file 🙄")
         return
      sed = await event.get_reply_message()
@@ -77,7 +77,7 @@ async def anonymize(event):
       
 @JEBotZ.on(events.NewMessage(pattern="^/edit ?(.*)"))
 async def caption(event):
-     if not event.reply_message:
+     if not event.reply_message():
         await event.reply("Reply to a media file 🙄")
         return
      lel = await event.get_reply_message()
