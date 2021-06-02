@@ -15,6 +15,7 @@
 
 
 import logging
+import functools
 from telethon import TelegramClient, events, Button
 from decouple import config
 
@@ -47,6 +48,24 @@ else:
     exit()
     
     
+
+def is_admin(func):
+    @functools.wraps(func)
+    async def a_c(event):
+        is_admin = False
+        if not event.is_private:
+            try:
+                _s = await event.client.get_permissions(event.chat_id, event.sender_id)
+                if _s.is_admin:
+                    is_admin = True
+            except:
+                is_admin = False
+        if is_admin:
+            await func(event, _s)
+        else:
+            await event.reply("Only admins can execute this command!")
+    return a_c
+
 @JEBotZ.on(events.NewMessage(pattern="^/start"))
 async def start(event):
     await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@JEBotZ**", 
@@ -65,18 +84,34 @@ async def _(event):
                        buttons=[[Button.inline("Help", data="help")], 
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
          
+@is_admin
 @JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
-   try:
-     lel = await event.get_reply_message()
-     cap = event.pattern_match.group(1)
-     await JEBotZ.send_file(event.chat.id, lel, caption=cap)
-   except Exception:
-      await event.reply("Reply to a media file 🥴")
-      return 
-    
-    
-    
+   if event.is_private:
+       return
+   else:
+     try:
+       lel = await event.get_reply_message()
+       cap = event.pattern_match.group(1)
+       await JEBotZ.send_file(event.chat.id, lel, caption=cap)
+     except Exception:
+        await event.reply("Reply to a media file 🥴")
+        return 
+
+@JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
+async def caption(event):
+   if event.is_group:
+      return
+   else:
+     try:
+       lel = await event.get_reply_message()
+       cap = event.pattern_match.group(1)
+       await JEBotZ.send_file(event.chat.id, lel, caption=cap)
+     except Exception:
+        await event.reply("Reply to a media file 🥴")
+        return 
+      
+       
 print("Bot has started!")
 print("Do visit @JEBotZ.")
 JEBotZ.run_until_disconnected()
