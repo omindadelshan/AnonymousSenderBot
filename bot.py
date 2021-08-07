@@ -23,19 +23,19 @@ logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.INFO
 )
 
-bottoken = None
+bottoken = "1834952425:AAHMr3OQ8Q6FjpaGk5q639g6ZqjN_BL7bis"
 # start the bot
 print("Starting...")
-apiid = 6
-apihash = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
+apiid = "6021226"
+apihash = "7c6dd7679f9dc0ab599f336de13cedf1"
 try:
-    bottoken = config("BOT_TOKEN")
+    bottoken = config("1834952425:AAHMr3OQ8Q6FjpaGk5q639g6ZqjN_BL7bis")
 except:
     print("Environment vars are missing!")
     print("Bot is quiting...")
     exit()
 
-if bottoken != None:
+if bottoken != 1834952425:AAHMr3OQ8Q6FjpaGk5q639g6ZqjN_BL7bis:
     try:
         JEBotZ = TelegramClient("bot", apiid, apihash).start(bot_token=bottoken)
     except Exception as e:
@@ -51,26 +51,26 @@ else:
 @JEBotZ.on(events.NewMessage(pattern="^/start"))
 async def start(event):
     if event.is_private:
-       await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@JEBotZ**", 
-                         buttons=[[Button.inline("Help", data="help")], 
-                                  [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
+       await event.reply("🥰Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick button on help to find out how to use me\n\n**@omindas**", 
+                         buttons=[[Button.inline("👨‍💻Help👨‍💻", data="help")], 
+                                  [Button.url("👨‍💻Channel👨‍💻", url="https://t.me/sdprojectupdates"), Button.url("🔥Developet🔥", url="https://t.me/omindas")]])
        return
     if event.is_group:
        await event.reply("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻") 
      
  
-@JEBotZ.on(events.callbackquery.CallbackQuery(data="help"))
+@omindas.on(events.callbackquery.CallbackQuery(data="help"))
 async def _(event):
      await event.edit("**Help 📖**\n\nUsing me you can anonymize the sender and add or change caption of a media file\n\n**Available Commands 🧐**\n\n- /send (reply to media): Anonymize the sender\n- /send (caption) (reply to media): Add or change the caption and anonymize the sender\n\n*⃣ This bot works on both groups and private, but only admins can use the bot in groups\n\n**@JEBotZ**", 
                         buttons=[[Button.inline("Back", data="start")]])
     
-@JEBotZ.on(events.callbackquery.CallbackQuery(data="start"))
+@omindas.on(events.callbackquery.CallbackQuery(data="start"))
 async def _(event):
-     await event.edit("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@JEBotZ**", 
+     await event.edit("Heya, I'm **Advanced Anonymous Sender** Bot 👨‍💻\n\nClick on help to find out how to use me\n\n**@omindas**", 
                        buttons=[[Button.inline("Help", data="help")], 
                                 [Button.url("Channel", url="https://t.me/Infinity_Bots"), Button.url("Source", url="https://github.com/ImJanindu/AnonymousSenderBot")]])
          
-@JEBotZ.on(events.NewMessage(pattern="^/send ?(.*)"))
+@Omindas.on(events.NewMessage(pattern="^/send ?(.*)"))
 async def caption(event):
    if event.is_private:
         return
